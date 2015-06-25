@@ -1,0 +1,46 @@
+load("data/conversion table.RData")
+
+#' Convert from one unit type to another
+#' @param vector A numeric vector to be converted
+#' @param origin The catalog symbol of the current unit.
+#'  See documentation for list of supportred units.
+#' @param target The catalog symbol of unit you want to convert to.
+#'  See documentation for list of supportred units.
+#' @param print_names Print the names of the units, useful for debugging.
+#' @examples
+#' convert(1:20, "kg", "g")
+#' convert(1:20, "galUK/min.ft2", "kft/s", print_names = TRUE)
+#' @export
+
+convert <- function(vector, origin, target, print_names = FALSE) {
+  if(!is.numeric(vector)){
+    warning("Non-numeric input coerced to numeric.")
+    vector <- as.numeric(vector)
+  }
+
+  if( !(origin %in% conversion_table$catalog_symbol)){
+    stop(paste(origin, "is not a supported unit."))
+  }
+
+  if ( !(target %in% conversion_table$catalog_symbol)) {
+    stop(paste(target, "is not a supported unit."))
+  }
+
+  record_1 <- dplyr::filter_(conversion_table, ~catalog_symbol == origin)
+  record_2 <- dplyr::filter_(conversion_table, ~catalog_symbol == target)
+
+  if (record_1$base_unit != record_2$base_unit) {
+    stop("Incompatible unit types")
+  }
+
+  base_units <- (record_1$a + record_1$b * vector) /
+    (record_1$c + record_1$d * vector)
+  out <- (base_units * record_2$c - record_2$a) / (record_2$b - record_2$d)
+
+  if (print_names) {
+    print(paste("Origin:", record_1$name))
+    print(paste("Target:", record_2$name))
+  }
+  out
+}
+

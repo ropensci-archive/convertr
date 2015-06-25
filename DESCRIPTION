@@ -1,0 +1,15 @@
+Package: convertr
+Type: Package
+Title: Convert Between Units
+Version: 0.1
+Date: 2015-06-24
+Authors@R: person("Gordon", "Shotwell", email = "g.e.shotwell@gmaill.com",
+                  role = c("aut", "cre"))
+Description: Provides conversion functionality between a broad range of
+    scientific, historical, and industrial unit types.
+Depends: R (>= 3.1.0)
+Imports: dplyr (>= 0.3.0.1)
+License: CC0
+LazyData: TRUE
+BugReports: https://github.com/GShotwell/convertr/issues
+Suggests: testthat
