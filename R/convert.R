@@ -1,28 +1,32 @@
-load("data/conversion table.RData")
-
-#' Convert from one unit type to another
+#' @title Convert from one unit type to another
+#'
+#' @description \code{convert} accepts a vector of numeric values and
+#' converts them from one unit to another. Approximately 1,300 units
+#' are available.
+#'
 #' @param vector A numeric vector to be converted
 #' @param origin The catalog symbol of the current unit.
 #'  See documentation for list of supportred units.
 #' @param target The catalog symbol of unit you want to convert to.
 #'  See documentation for list of supportred units.
 #' @param print_names Print the names of the units, useful for debugging.
+#'
 #' @examples
 #' convert(1:20, "kg", "g")
 #' convert(1:20, "galUK/min.ft2", "kft/s", print_names = TRUE)
+#'
 #' @export
-
 convert <- function(vector, origin, target, print_names = FALSE) {
   if(!is.numeric(vector)){
     warning("Non-numeric input coerced to numeric.")
     vector <- as.numeric(vector)
   }
 
-  if( !(origin %in% conversion_table$catalog_symbol)){
+  if(!origin %in% conversion_table$catalog_symbol){
     stop(paste(origin, "is not a supported unit."))
   }
 
-  if ( !(target %in% conversion_table$catalog_symbol)) {
+  if (!target %in% conversion_table$catalog_symbol) {
     stop(paste(target, "is not a supported unit."))
   }
 

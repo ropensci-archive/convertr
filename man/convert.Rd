@@ -9,7 +9,7 @@ convert(vector, origin, target, print_names = FALSE)
 \arguments{
 \item{vector}{A numeric vector to be converted}
 
-\item{origin}{The catalog symbol of the current unit. See documentation.
+\item{origin}{The catalog symbol of the current unit.
 See documentation for list of supportred units.}
 
 \item{target}{The catalog symbol of unit you want to convert to.
@@ -18,7 +18,9 @@ See documentation for list of supportred units.}
 \item{print_names}{Print the names of the units, useful for debugging.}
 }
 \description{
-Convert from one unit type to another
+\code{convert} accepts a vector of numeric values and
+converts them from one unit to another. Approximately 1,300 units
+are available.
 }
 \examples{
 convert(1:20, "kg", "g")
