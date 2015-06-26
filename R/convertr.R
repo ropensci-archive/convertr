@@ -2,9 +2,6 @@
 #'
 #' @name convertr
 #' @docType package
-#' @import dplyr
-#'
-#'
 #'
 NULL
 

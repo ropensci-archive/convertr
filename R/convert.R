@@ -30,8 +30,8 @@ convert <- function(vector, origin, target, print_names = FALSE) {
     stop(paste(target, "is not a supported unit."))
   }
 
-  record_1 <- dplyr::filter_(conversion_table, ~catalog_symbol == origin)
-  record_2 <- dplyr::filter_(conversion_table, ~catalog_symbol == target)
+  record_1 <- conversion_table[conversion_table$catalog_symbol == origin,]
+  record_2 <- conversion_table[conversion_table$catalog_symbol == target,]
 
   if (record_1$base_unit != record_2$base_unit) {
     stop("Incompatible unit types")
@@ -45,6 +45,6 @@ convert <- function(vector, origin, target, print_names = FALSE) {
     print(paste("Origin:", record_1$name))
     print(paste("Target:", record_2$name))
   }
-  out
+  return(out)
 }
 
