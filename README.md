@@ -1,6 +1,6 @@
 # convertr
 
-An R package for converting things to other things. Not on cran but hopefully can be installed using:
+An R package for converting things to other things. The package is not on cran but can be installed using:
 
 ```
 install.packages("devtools")
