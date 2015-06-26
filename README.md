@@ -7,7 +7,7 @@ install.packages("devtools")
 devtools::install_github("GShotwell/convertr")
 ```
 
-There's only one function which converts a numerical vectors from one unit to another. 
+The package contains one function which converts a numerical vectors from one unit to another. 
 
 ```
 convert(1:20, "kg", "g")
