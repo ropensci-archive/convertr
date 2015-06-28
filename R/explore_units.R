@@ -13,7 +13,12 @@
 
 explore_units <- function(){
 
+<<<<<<< HEAD
 
+||||||| merged common ancestors
+<<<<<<< HEAD
+=======
+>>>>>>> f5bf13998023e2c9a2006b7f1ca2235ebe6e5bf9
     appDir <- system.file("shiny_examples", "app", package = "convertr")
 
     if (appDir == "") {
