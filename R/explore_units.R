@@ -13,11 +13,8 @@
 
 explore_units <- function(){
 
-<<<<<<< HEAD
     appDir <- system.file("shiny_examples", "app", package = "convertr")
-=======
-    appDir <- system.file("shiny-examples", package = "convertr")
->>>>>>> 3f0d364afcaa316317a54a648f203393d3d63fb5
+
     if (appDir == "") {
       stop("Could not find example directory. Try re-installing `convertr`.", call. = FALSE)
     }
