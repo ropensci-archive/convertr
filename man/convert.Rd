@@ -10,10 +10,10 @@ convert(vector, origin, target, print_names = FALSE)
 \item{vector}{A numeric vector to be converted}
 
 \item{origin}{The catalog symbol of the current unit.
-See documentation for list of supportred units.}
+Run explore_units() for list of supported units.}
 
 \item{target}{The catalog symbol of unit you want to convert to.
-See documentation for list of supportred units.}
+Run explore_units() for list of supported units.}
 
 \item{print_names}{Print the names of the units, useful for debugging.}
 }

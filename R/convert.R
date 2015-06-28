@@ -6,9 +6,9 @@
 #'
 #' @param vector A numeric vector to be converted
 #' @param origin The catalog symbol of the current unit.
-#'  See documentation for list of supportred units.
+#'  Run explore_units() for list of supported units.
 #' @param target The catalog symbol of unit you want to convert to.
-#'  See documentation for list of supportred units.
+#'  Run explore_units() for list of supported units.
 #' @param print_names Print the names of the units, useful for debugging.
 #'
 #' @examples
