@@ -6,8 +6,7 @@ shinyUI(pageWithSidebar(
                 "Base Unit",
                 c( "All",
                    unique(conversion_table$base_unit)),
-                selected = "1/a"),
-    textOutput("text")
+                selected = "1/a")
   ),
 
   mainPanel(
