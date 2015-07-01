@@ -5,9 +5,11 @@ shinyUI(pageWithSidebar(
     selectInput("base_unit",
                 "Base Unit",
                 c( "All",
-                   unique(conversion_table$catalog_symbol)),
-                selected = "m2")
+                   unique(conversion_table$base_unit)),
+                selected = "1/a"),
+    textOutput("text")
   ),
+
   mainPanel(
     dataTableOutput("conversion")
   )
