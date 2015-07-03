@@ -4,8 +4,6 @@
 #' converts them from one unit to another. Approximately 1,300 units
 #' are available.
 #'
-#' @param shiny Whether to launch an interactive shiny app or return a character vector of
-#' unit types.
 #' @examples
 #' explore_units()
 #'
