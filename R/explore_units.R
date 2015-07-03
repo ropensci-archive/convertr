@@ -18,5 +18,5 @@ explore_units <- function(){
     if (appDir == "") {
       stop("Could not find example directory. Try re-installing `convertr`.", call. = FALSE)
     }
-    shiny::runApp(paste0(appDir), display.mode = "normal")
+    shiny::runApp(appDir, display.mode = "normal")
 }
