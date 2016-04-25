@@ -17,4 +17,4 @@ convert(1:20, "sq yd", "km2")
 convert(1:20, "kg", "km2)
 ```
 
-You can also launch a shiny gadget to explore the available units either with `convert_gadget()` or through the addin menue.
+You can also launch a shiny gadget to explore the available units either with `convert_gadget()` or through the addin menu.
