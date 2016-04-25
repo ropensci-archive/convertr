@@ -1,3 +1,17 @@
+#'  Launch interactive conversion gadget
+#'
+#' @param vector
+#' A numeric vector
+#'
+#' @return
+#' Insert text into code with a proper convertr::convert() call.
+#' @export
+#'
+#' @examples
+#'
+#' convert_gadget(1:20)
+#'
+#'
 convert_gadget  <- function(vector) {
 
   ui <- miniPage(

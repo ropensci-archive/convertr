@@ -7,10 +7,13 @@ Authors@R: person("Gordon", "Shotwell", email = "g.e.shotwell@gmaill.com",
                   role = c("aut", "cre"))
 Description: Provides conversion functionality between a broad range of
     scientific, historical, and industrial unit types.
-Depends: R (>= 3.1.0)
-Import:
-  shiny
+Depends:
+    R (>= 3.1.0)
+Import: shiny,
+    miniPage
 License: CC0
 LazyData: TRUE
 BugReports: https://github.com/GShotwell/convertr/issues
-Suggests: testthat
+Suggests:
+    testthat
+RoxygenNote: 5.0.1
