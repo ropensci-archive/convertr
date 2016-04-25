@@ -1,0 +1,4 @@
+Name: Unit Converter
+Description: Convert numeric vectors between units
+Binding: convert_gadget
+Interactive: true
