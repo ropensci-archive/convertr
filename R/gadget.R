@@ -7,11 +7,7 @@
 #' Insert text into code with a proper convertr::convert() call.
 #' @export
 #'
-#' @examples
-#'
-#' convert_gadget(1:20)
-#'
-#'
+
 convert_gadget  <- function(vector) {
   si_units <- unique(conversion_table$base_unit)
   si_units <- si_units[order(si_units)]

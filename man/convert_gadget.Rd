@@ -15,10 +15,4 @@ Insert text into code with a proper convertr::convert() call.
 \description{
 Launch interactive conversion gadget
 }
-\examples{
-
-convert_gadget(1:20)
-
-
-}
 

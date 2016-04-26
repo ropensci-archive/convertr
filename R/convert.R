@@ -22,11 +22,11 @@ convert <- function(vector, origin, target, print_names = FALSE) {
     vector <- as.numeric(vector)
   }
 
-  if(!is.supported.unit(origin)){
+  if(!is_supported_unit(origin)){
     stop(paste(origin, "is not a supported unit."))
   }
 
-  if (!is.supported.unit(target)) {
+  if (!is_supported_unit(target)) {
     stop(paste(target, "is not a supported unit."))
   }
 
@@ -49,6 +49,9 @@ convert <- function(vector, origin, target, print_names = FALSE) {
 }
 
 #' Check whether a unit can be converted.
-is.supported.unit <- function(unit) {
+#'
+#' @param unit
+#' Name of Unit to be converted
+is_supported_unit <- function(unit) {
   return(unit %in% conversion_table$catalog_symbol)
 }
