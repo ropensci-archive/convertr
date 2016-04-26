@@ -2,7 +2,7 @@ context("Test that conversion can be performed")
 
 test_that("conversion is correct", {
   expect_equal(convert(1, "mi", "km"), 1.60934)
-  expect_equal(convert(0, "degC", "K"), 273)
+  expect_equal(convert(0, "degC", "K"), 273.15)
   expect_equal(convert(100, "gn", "m/s2"), 980.665)
 })
 
