@@ -1,7 +1,7 @@
 #'  Launch interactive conversion gadget
 #'
 #' @param vector
-#' A numeric vector
+#' A numeric vector to convert. You can change the vector within the app.
 #'
 #' @return
 #' Insert text into code with a proper convertr::convert() call.
@@ -13,25 +13,28 @@
 #'
 #'
 convert_gadget  <- function(vector) {
+  si_units <- unique(conversion_table$base_unit)
+  si_units <- si_units[order(si_units)]
 
-  ui <- miniPage(
-    gadgetTitleBar("Unit Converter"),
-    miniContentPanel(
-      fluidRow(
-        selectInput("si_unit",
-                    "SI Unit",
-                    c("All", unique(conversion_table$base_unit))),
-        textInput("vector", "Vector", deparse(substitute(vector)))
+  ui <- miniUI::miniPage(
+    miniUI::gadgetTitleBar("Unit Converter"),
+    miniUI::miniContentPanel(
+      shiny::fluidRow(
+        shiny::selectInput("si_unit",
+                           "SI Unit",
+                           c("All", si_units)),
+        shiny::textInput("vector", "Epression Returning Numeric Vector",
+                         deparse(substitute(vector)))
       ),
-      fluidRow(
-        column(width = 6,
-               uiOutput("from_unit")
+      shiny::fluidRow(
+        shiny::column(width = 6,
+                      shiny::uiOutput("from_unit")
         ),
-        column( width = 6,
-                uiOutput("to_unit")
+        shiny::column( width = 6,
+                       shiny::uiOutput("to_unit")
         )
       ),
-      fluidRow(
+      shiny::fluidRow(
         DT::dataTableOutput("table", width = "75%")
       )
     )
@@ -39,53 +42,58 @@ convert_gadget  <- function(vector) {
 
   server <- function(input, output, session) {
 
-    vector <- reactive(eval(parse( text = input$vector)))
+    vector <- shiny::reactive(eval(parse( text = input$vector)))
 
 
-    output$from_unit <- renderUI({
+    output$from_unit <- shiny::renderUI({
 
       if(input$si_unit == "All"){
 
         return(
-          selectInput("from_unit", "From Unit",
-                      unique(conversion_table$catalog_symbol))
+          shiny::selectInput("from_unit", "From Unit",
+                             unique(conversion_table$catalog_symbol))
         )
       } else {
         choices <- conversion_table[conversion_table$base_unit ==
                                       input$si_unit, "catalog_symbol"]
-        selectInput("from_unit", "From Unit", unique(choices))
+        shiny::selectInput("from_unit", "From Unit", unique(choices))
       }
     })
 
-    output$to_unit <- renderUI({
+    output$to_unit <- shiny::renderUI({
 
       if(input$si_unit == "All"){
-        selectInput("to_unit", "To Unit",
-                    unique(conversion_table$catalog_symbol))
+        shiny::selectInput("to_unit", "To Unit",
+                           unique(conversion_table$catalog_symbol))
       } else {
         choices <- conversion_table[conversion_table$base_unit ==
                                       input$si_unit, "catalog_symbol"]
-        selectInput("to_unit", "To Unit", unique(choices))
+        shiny::selectInput("to_unit", "To Unit", unique(choices))
       }
     })
 
 
     output$table <- DT::renderDataTable({
-      v1 <- vector()[1:min(length(vector()), 20)]
-      v2 <- convert(v1, input$from_unit, input$to_unit)
-      out <- data.frame(From = v1, To = v2)
-      names(out) <- c(conversion_table[conversion_table$catalog_symbol ==
-                                         input$from_unit, "name"],
-                      conversion_table[conversion_table$catalog_symbol ==
-                                         input$to_unit, "name"])
-      out
+      if(is.numeric(vector())){
+        v1 <- vector()[1:min(length(vector()), 20)]
+      } else{
+        v1 <- 1:10
+      }
+        v2 <- convert(v1, input$from_unit, input$to_unit)
+        out <- data.frame(From = v1, To = v2)
+        names(out) <- c(conversion_table[conversion_table$catalog_symbol ==
+                                           input$from_unit, "name"],
+                        conversion_table[conversion_table$catalog_symbol ==
+                                           input$to_unit, "name"])
+        out
+
     }, options = list(searching = FALSE, paging = FALSE),
     rownames = FALSE)
 
 
     # When the Done button is clicked, return a value
 
-    observeEvent(input$done, {
+    shiny::observeEvent(input$done, {
 
       code <- paste0("convert(",
                      input$vector,
@@ -94,12 +102,12 @@ convert_gadget  <- function(vector) {
                      "','",
                      input$to_unit,
                      "')")
-      stopApp(rstudioapi::insertText(code))
+      shiny::stopApp(rstudioapi::insertText(code))
 
     })
 
   }
 
-  runGadget(ui, server)
+  shiny::runGadget(ui, server)
 }
 

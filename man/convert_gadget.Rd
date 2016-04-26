@@ -7,7 +7,7 @@
 convert_gadget(vector)
 }
 \arguments{
-\item{vector}{A numeric vector}
+\item{vector}{A numeric vector to convert. You can change the vector within the app.}
 }
 \value{
 Insert text into code with a proper convertr::convert() call.
