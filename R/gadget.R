@@ -47,7 +47,7 @@ convert_gadget  <- function(vector) {
 
         return(
           shiny::selectInput("from_unit", "From Unit",
-                             unique(convertr::conversion_table$catalog_symbol))
+                             unique(conversion_table$catalog_symbol))
         )
       } else {
         choices <- conversion_table[conversion_table$base_unit ==
@@ -91,7 +91,7 @@ convert_gadget  <- function(vector) {
 
     shiny::observeEvent(input$done, {
 
-      code <- paste0("convert(",
+      code <- paste0("convertr::convert(",
                      input$vector,
                      ",'",
                      input$from_unit,

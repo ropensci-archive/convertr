@@ -16,7 +16,7 @@ conversion_table$d <- as.numeric(conversion_table$d)
 
 
 if(length(conversion_table$catalog_symbol) == length(unique(conversion_table$catalog_symbol))){
-  save(conversion_table, file = "data/conversion_table.RData")
+  devtools::use_data(conversion_table, internal = TRUE)
 } else {
   stop("catalog symbols not unique")
 }
