@@ -9,7 +9,7 @@
 #'
 
 convert_gadget  <- function(vector) {
-  si_units <- unique(conversion_table$base_unit)
+  si_units <- unique(conversion_table$base_unit[conversion_table$multi_unit])
   si_units <- si_units[order(si_units)]
 
   ui <- miniUI::miniPage(
