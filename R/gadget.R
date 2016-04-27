@@ -12,6 +12,12 @@ convert_gadget  <- function(vector) {
   si_units <- unique(conversion_table$base_unit[conversion_table$multi_unit])
   si_units <- si_units[order(si_units)]
 
+  if(missing(vector)){
+    express <- "1:10"
+  } else {
+    express <- deparse(substitute(vector))
+  }
+
   ui <- miniUI::miniPage(
     miniUI::gadgetTitleBar("Unit Converter"),
     miniUI::miniContentPanel(
@@ -20,7 +26,7 @@ convert_gadget  <- function(vector) {
                            "SI Unit",
                            c("All", si_units)),
         shiny::textInput("vector", "Epression Returning Numeric Vector",
-                         deparse(substitute(vector)))
+                         express)
       ),
       shiny::fluidRow(
         shiny::column(width = 6,
@@ -70,6 +76,7 @@ convert_gadget  <- function(vector) {
 
 
     output$table <- DT::renderDataTable({
+      req(input$from_unit, input$to_unit)
       if(is.numeric(vector())){
         v1 <- vector()[1:min(length(vector()), 20)]
       } else{
