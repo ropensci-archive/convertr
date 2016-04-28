@@ -1,5 +1,7 @@
 # convertr
 
+[![Travis-CI Build Status](https://travis-ci.org/GShotwell/convertr.svg?branch=master)](https://travis-ci.org/GShotwell/convertr)
+
 An R package for converting things to other things. The package is not on cran but can be installed using:
 
 ```
