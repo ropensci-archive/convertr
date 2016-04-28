@@ -13,7 +13,9 @@ conversion_table$b <- as.numeric(conversion_table$b)
 conversion_table$c <- as.numeric(conversion_table$c)
 conversion_table$d <- as.numeric(conversion_table$d)
 
-#Identify whether a base unit has more than one unit which it can convert to.
+#Identify whether a base unit has more than one unit which it can convert to. This
+# is used for the shiny gadget.
+
 multiple_units <- conversion_table %>%
   group_by(base_unit) %>%
   tally() %>%
