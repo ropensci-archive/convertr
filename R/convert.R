@@ -6,17 +6,18 @@
 #'
 #' @param vector A numeric vector to be converted
 #' @param origin The catalog symbol of the current unit.
-#'  Run explore_units() for list of supported units.
 #' @param target The catalog symbol of unit you want to convert to.
-#'  Run explore_units() for list of supported units.
-#' @param print_names Print the names of the units, useful for debugging.
 #'
 #' @examples
 #' convert(1:20, "kg", "g")
-#' convert(1:20, "galUK/min.ft2", "kft/s", print_names = TRUE)
+#' convert(1:20, "galUK/min.ft2", "kft/s")
+#'
+#' /don't run
+#' convert(1:20, "kg", "km2)
 #'
 #' @export
-convert <- function(vector, origin, target, print_names = FALSE) {
+#'
+convert <- function(vector, origin, target) {
   if(!is.numeric(vector)){
     warning("Non-numeric input coerced to numeric.")
     vector <- as.numeric(vector)
@@ -41,10 +42,6 @@ convert <- function(vector, origin, target, print_names = FALSE) {
     (record_1$c + record_1$d * vector)
   out <- (base_units * record_2$c - record_2$a) / (record_2$b - record_2$d)
 
-  if (print_names) {
-    print(paste("Origin:", record_1$name))
-    print(paste("Target:", record_2$name))
-  }
   return(out)
 }
 

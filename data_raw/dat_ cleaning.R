@@ -24,6 +24,13 @@ multiple_units <- conversion_table %>%
 
 conversion_table$multi_unit <- conversion_table$base_unit %in% multiple_units
 
+#can this table produce zero denominator
+
+if(!all(conversion_table$c > 0)){
+  warning("Invalid Converstion Table")
+}
+
+
 if(length(conversion_table$catalog_symbol) == length(unique(conversion_table$catalog_symbol))){
   devtools::use_data(conversion_table, internal = TRUE, overwrite = TRUE)
 } else {

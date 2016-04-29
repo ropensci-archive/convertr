@@ -13,7 +13,7 @@ Imports: shiny(>=	0.13.2),
     miniUI(>= 0.1.1),
     DT(>= 0.1),
     rstudioapi(>=	0.5)
-License: CC0
+License: MIT + file LICENSE
 LazyData: TRUE
 BugReports: https://github.com/GShotwell/convertr/issues
 Suggests:

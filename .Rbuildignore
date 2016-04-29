@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 data_retrieval/*
 ^\.travis\.yml$
+^CONDUCT\.md$
