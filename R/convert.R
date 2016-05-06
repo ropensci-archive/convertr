@@ -47,6 +47,7 @@ convert <- function(vector, origin, target) {
 
 #' Check whether a unit can be converted.
 #'
+#' @noRd
 #' @param unit
 #' Name of Unit to be converted
 is_supported_unit <- function(unit) {

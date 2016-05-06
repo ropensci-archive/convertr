@@ -4,27 +4,18 @@
 \alias{convert}
 \title{Convert from one unit type to another}
 \usage{
-convert(vector, origin, target, print_names = FALSE)
+convert(vector, origin, target)
 }
 \arguments{
 \item{vector}{A numeric vector to be converted}
 
-\item{origin}{The catalog symbol of the current unit.
-Run explore_units() for list of supported units.}
+\item{origin}{The catalog symbol of the current unit.}
 
-\item{target}{The catalog symbol of unit you want to convert to.
-Run explore_units() for list of supported units.}
-
-\item{print_names}{Print the names of the units, useful for debugging.}
+\item{target}{The catalog symbol of unit you want to convert to.}
 }
 \description{
 \code{convert} accepts a vector of numeric values and
 converts them from one unit to another. Approximately 1,300 units
 are available.
-}
-\examples{
-convert(1:20, "kg", "g")
-convert(1:20, "galUK/min.ft2", "kft/s", print_names = TRUE)
-
 }
 
