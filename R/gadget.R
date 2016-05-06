@@ -22,11 +22,15 @@ convert_gadget  <- function(vector) {
     miniUI::gadgetTitleBar("Unit Converter"),
     miniUI::miniContentPanel(
       shiny::fluidRow(
-        shiny::selectInput("si_unit",
-                           "SI Unit",
-                           c("All", si_units)),
-        shiny::textInput("vector", "Epression Returning Numeric Vector",
-                         express)
+        shiny::column( width = 6,
+                       shiny::selectInput("si_unit",
+                                          "SI Unit",
+                                          c("All", si_units))
+        ),
+        shiny::column( width = 6,
+                       shiny::textInput("vector", "Epression Returning Numeric Vector",
+                                        express)
+        )
       ),
       shiny::fluidRow(
         shiny::column(width = 6,
@@ -58,37 +62,51 @@ convert_gadget  <- function(vector) {
       } else {
         choices <- conversion_table[conversion_table$base_unit ==
                                       input$si_unit, "catalog_symbol"]
+
         shiny::selectInput("from_unit", "From Unit", unique(choices))
       }
     })
 
     output$to_unit <- shiny::renderUI({
+      shiny::req(input$from_unit)
+    #  browser()
 
       if(input$si_unit == "All"){
-        shiny::selectInput("to_unit", "To Unit",
-                           unique(conversion_table$catalog_symbol))
-      } else {
+
+        if(input$from_unit != unique(conversion_table$catalog_symbol)[1]){
+          base_unit <- conversion_table[conversion_table$catalog_symbol ==
+                                          input$from_unit, "base_unit"]
+
+          choices <- conversion_table[conversion_table$base_unit ==
+                                        base_unit, "catalog_symbol"]
+          return(shiny::selectInput("to_unit", "To Unit", unique(choices)))
+        } else {
+          choices <- unique(conversion_table$catalog_symbol)
+          shiny::selectInput("to_unit", "To Unit", unique(choices))
+        }
+      }else {
         choices <- conversion_table[conversion_table$base_unit ==
                                       input$si_unit, "catalog_symbol"]
         shiny::selectInput("to_unit", "To Unit", unique(choices))
       }
+
     })
 
 
     output$table <- DT::renderDataTable({
-      req(input$from_unit, input$to_unit)
+      shiny::req(input$from_unit, input$to_unit)
       if(is.numeric(vector())){
         v1 <- vector()[1:min(length(vector()), 20)]
       } else{
         v1 <- 1:10
       }
-        v2 <- convert(v1, input$from_unit, input$to_unit)
-        out <- data.frame(From = v1, To = v2)
-        names(out) <- c(conversion_table[conversion_table$catalog_symbol ==
-                                           input$from_unit, "name"],
-                        conversion_table[conversion_table$catalog_symbol ==
-                                           input$to_unit, "name"])
-        out
+      v2 <- convert(v1, input$from_unit, input$to_unit)
+      out <- data.frame(From = v1, To = v2)
+      names(out) <- c(conversion_table[conversion_table$catalog_symbol ==
+                                         input$from_unit, "name"],
+                      conversion_table[conversion_table$catalog_symbol ==
+                                         input$to_unit, "name"])
+      out
 
     }, options = list(searching = FALSE, paging = FALSE),
     rownames = FALSE)
