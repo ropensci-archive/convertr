@@ -69,7 +69,6 @@ convert_gadget  <- function(vector) {
 
     output$to_unit <- shiny::renderUI({
       shiny::req(input$from_unit)
-    #  browser()
 
       if(input$si_unit == "All"){
 
@@ -108,7 +107,7 @@ convert_gadget  <- function(vector) {
                                          input$to_unit, "name"])
       out
 
-    }, options = list(searching = FALSE, paging = FALSE),
+    }, options = list(searching = FALSE, paging = FALSE, dom = ""),
     rownames = FALSE)
 
 
