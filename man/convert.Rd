@@ -13,6 +13,9 @@ convert(vector, origin, target)
 
 \item{target}{The catalog symbol of unit you want to convert to.}
 }
+\value{
+A numeric vector
+}
 \description{
 \code{convert} accepts a vector of numeric values and
 converts them from one unit to another. Approximately 1,300 units

@@ -33,8 +33,9 @@ convert_gadget  <- function(vector, return_value = FALSE) {
         )
       ),
       shiny::fluidRow(
-        column(width = 6),
-        column(width = 6, textOutput("error_text"))
+        shiny::column(width = 6),
+        shiny::column(width = 6,
+                      shiny::textOutput("error_text"))
       ),
       shiny::br(),
       shiny::fluidRow(

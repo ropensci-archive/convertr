@@ -8,6 +8,9 @@
 #' @param origin The catalog symbol of the current unit.
 #' @param target The catalog symbol of unit you want to convert to.
 #'
+#' @return
+#' A numeric vector
+#'
 #' @examples
 #' convert(1:20, "kg", "g")
 #' convert(1:20, "galUK/min.ft2", "kft/s")
