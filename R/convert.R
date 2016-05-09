@@ -53,3 +53,16 @@ convert <- function(vector, origin, target) {
 is_supported_unit <- function(unit) {
   return(unit %in% conversion_table$catalog_symbol)
 }
+
+#' Return the conversion table
+#' A convenience function to return the lookup table underlying `convert()`
+#'
+#' @return
+#' A dataframe of conversion table
+#' @export
+#'
+#' @examples
+#' a <-  get_conversion_table()
+get_conversion_table <- function(){
+  conversion_table
+}
