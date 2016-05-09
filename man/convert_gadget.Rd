@@ -8,9 +8,12 @@ convert_gadget(vector, return_value = FALSE)
 }
 \arguments{
 \item{vector}{A numeric vector to convert. You can change the vector within the app.}
+
+\item{return_value}{By default the gadget generates a convert() call, if return_value is set to
+TRUE it will instead generate a converted vector.}
 }
 \value{
-Insert text into code with a proper convertr::convert() call.
+Insert text into code with a proper convert call.
 }
 \description{
 Launch interactive conversion gadget

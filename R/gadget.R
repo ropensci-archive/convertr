@@ -3,8 +3,11 @@
 #' @param vector
 #' A numeric vector to convert. You can change the vector within the app.
 #'
+#' @param return_value
+#' By default the gadget generates a convert() call, if return_value is set to
+#' TRUE it will instead generate a converted vector.
 #' @return
-#' Insert text into code with a proper convertr::convert() call.
+#' Insert text into code with a proper convert call.
 #' @export
 #'
 
