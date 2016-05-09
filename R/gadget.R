@@ -8,7 +8,7 @@
 #' @export
 #'
 
-convert_gadget  <- function(vector) {
+convert_gadget  <- function(vector, return_value = FALSE) {
   si_units <- unique(conversion_table$base_unit[conversion_table$multi_unit])
   si_units <- si_units[order(si_units)]
 
@@ -33,6 +33,11 @@ convert_gadget  <- function(vector) {
         )
       ),
       shiny::fluidRow(
+        column(width = 6),
+        column(width = 6, textOutput("error_text"))
+      ),
+      shiny::br(),
+      shiny::fluidRow(
         shiny::column(width = 6,
                       shiny::uiOutput("from_unit")
         ),
@@ -40,15 +45,24 @@ convert_gadget  <- function(vector) {
                        shiny::uiOutput("to_unit")
         )
       ),
+
       shiny::fluidRow(
-        DT::dataTableOutput("table", width = "75%")
+        DT::dataTableOutput("table")
       )
     )
   )
 
   server <- function(input, output, session) {
 
-    vector <- shiny::reactive(eval(parse( text = input$vector)))
+    vector <- shiny::reactive(
+      try(eval(parse( text = input$vector)), silent = TRUE)
+    )
+
+    output$error_text <- renderText({
+      if(!is.numeric(vector())){
+        "Cannot return numeric vector, using default values (1:10)"
+      }
+    })
 
 
     output$from_unit <- shiny::renderUI({
@@ -114,15 +128,23 @@ convert_gadget  <- function(vector) {
     # When the Done button is clicked, return a value
 
     shiny::observeEvent(input$done, {
+      if(return_value) {
+        out <-  convert(vector(),
+                        input$from_unit,
+                        input$to_unit)
+        text <- paste0("c(", paste(out, collapse = ", "), ")")
+        shiny::stopApp(rstudioapi::insertText(text))
+      } else {
 
-      code <- paste0("convertr::convert(",
-                     input$vector,
-                     ",'",
-                     input$from_unit,
-                     "','",
-                     input$to_unit,
-                     "')")
-      shiny::stopApp(rstudioapi::insertText(code))
+        code <- paste0("convertr::convert(",
+                       input$vector,
+                       ",'",
+                       input$from_unit,
+                       "','",
+                       input$to_unit,
+                       "')")
+        shiny::stopApp(rstudioapi::insertText(code))
+      }
 
     })
 
