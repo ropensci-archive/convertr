@@ -2,3 +2,5 @@
 
 export(convert)
 export(convert_gadget)
+export(explore_units)
+export(get_conversion_table)

@@ -4,7 +4,7 @@
 \alias{convert_gadget}
 \title{Launch interactive conversion gadget}
 \usage{
-convert_gadget(vector)
+convert_gadget(vector, return_value = FALSE)
 }
 \arguments{
 \item{vector}{A numeric vector to convert. You can change the vector within the app.}

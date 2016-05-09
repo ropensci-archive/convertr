@@ -14,7 +14,6 @@ Imports: shiny(>= 0.13.2),
     DT(>= 0.1),
     rstudioapi(>= 0.5)
 License: MIT + file LICENSE
-4209ff453145f751cd7d2710bf32370695f928f0
 LazyData: TRUE
 BugReports: https://github.com/GShotwell/convertr/issues
 Suggests:
