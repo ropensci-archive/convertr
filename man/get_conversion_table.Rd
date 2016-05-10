@@ -10,7 +10,7 @@ get_conversion_table()
 Conversion table dataframe
 }
 \description{
-A convenience function to return the lookup table underlying \code{convert()}
+A convenience function to return \code{\link{conversion_table}}
 }
 \examples{
 a <-  get_conversion_table()

@@ -2,15 +2,15 @@
 
 #' @title Explore conversion table
 #'
-#' @description A shiny application that lets you take a look at the conversion table.
+#' @description A shiny application that lets you take a look at the
+#' \code{\link{conversion_table}} dataframe.
 #'
 #'
 #' @return
 #' Launches a Shiny app
 #' @export
 #'
-#' @examples
-#'
+
 explore_units <- function(){
   app <- shiny::shinyApp(
     ui = shiny::shinyUI(

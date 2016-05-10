@@ -10,9 +10,7 @@ explore_units()
 Launches a Shiny app
 }
 \description{
-A shiny application that lets you take a look at the conversion table.
-}
-\examples{
-
+A shiny application that lets you take a look at the
+\code{\link{conversion_table}} dataframe.
 }
 
