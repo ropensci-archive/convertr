@@ -99,25 +99,30 @@ convert_gadget  <- function(vector, return_value = FALSE) {
           return(shiny::selectInput("to_unit", "To Unit", unique(choices)))
         } else {
           choices <- unique(conversion_table$catalog_symbol)
-          shiny::selectInput("to_unit", "To Unit", unique(choices))
+          return(shiny::selectInput("to_unit", "To Unit", unique(choices)))
         }
       }else {
         choices <- conversion_table[conversion_table$base_unit ==
                                       input$si_unit, "catalog_symbol"]
-        shiny::selectInput("to_unit", "To Unit", unique(choices))
+        return(shiny::selectInput("to_unit", "To Unit", unique(choices)))
       }
 
     })
 
 
     output$table <- DT::renderDataTable({
-      shiny::req(input$from_unit, input$to_unit)
+      shiny::req( input$to_unit)
       if(is.numeric(vector())){
         v1 <- vector()[1:min(length(vector()), 20)]
       } else{
         v1 <- 1:10
       }
-      v2 <- convert(v1, input$from_unit, input$to_unit)
+      v2 <- tryCatch(
+        convert(v1, input$from_unit, input$to_unit),
+        error = function(c) v1
+      )
+
+
       out <- data.frame(From = v1, To = v2)
       names(out) <- c(conversion_table[conversion_table$catalog_symbol ==
                                          input$from_unit, "name"],
