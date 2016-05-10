@@ -16,9 +16,14 @@ TRUE it will instead generate a converted vector.}
 Insert output text into editor.
 }
 \description{
-It's often difficult to remember the symbol for the units you want to convert.
-This gadget shows which units can be converted to one anohter, and a example calculation on sample data.
-On exit you can either return a valid \code{convert()} expression or a
+It's often difficult to remember the symbol for the units you
+want to convert.This gadget shows which units can be converted to one anohter,
+and provides an example calculation on a sample vector
+On exit you can either return a valid \code{convert()} call or a
 converted numeric vector.
+}
+\examples{
+convert_gadget()
+convert_gadget(mtcars$mpg)
 }
 

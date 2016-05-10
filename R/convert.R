@@ -61,7 +61,7 @@ is_supported_unit <- function(unit) {
 }
 
 #' @title Return the conversion table
-#' @description A convenience function to return the lookup table underlying \code{convert()}
+#' @description A convenience function to return \code{\link{conversion_table}}
 #'
 #' @return
 #' Conversion table dataframe
