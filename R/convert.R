@@ -1,8 +1,11 @@
 #' @title Convert from one unit type to another
 #'
-#' @description \code{convert} accepts a vector of numeric values and
-#' converts them from one unit to another. Approximately 1,300 units
+#' @description
+#' Converts numeric vectors from one unit to another Approximately 1500 units
 #' are available.
+#' \code{\link{convert_gadget}} can help you build valid \code{convert()} expressions and
+#' \code{\link{explore_units}} provides an interface for exploring the \code{\link{conversion_table}}
+#' which underlies the computation.
 #'
 #' @param vector A numeric vector to be converted
 #' @param origin The catalog symbol of the current unit.
@@ -14,9 +17,9 @@
 #' @examples
 #' convert(1:20, "kg", "g")
 #' convert(1:20, "galUK/min.ft2", "kft/s")
-#'
-#' /don't run
-#' convert(1:20, "kg", "km2)
+#' \dontrun{
+#' convert(1:20, "kg", "km2")
+#' }
 #'
 #' @export
 #'
@@ -57,11 +60,11 @@ is_supported_unit <- function(unit) {
   return(unit %in% conversion_table$catalog_symbol)
 }
 
-#' Return the conversion table
-#' A convenience function to return the lookup table underlying `convert()`
+#' @title Return the conversion table
+#' @description A convenience function to return the lookup table underlying \code{convert()}
 #'
 #' @return
-#' A dataframe of conversion table
+#' Conversion table dataframe
 #' @export
 #'
 #' @examples

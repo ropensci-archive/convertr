@@ -15,11 +15,13 @@ The package contains one function which converts numerical vectors from one unit
 convert(1:20, "kg", "g")
 convert(1:20, "sq yd", "km2")
 
-#This will produce and error
+#This will produce an error:
 convert(1:20, "kg", "km2)
 ```
+Units are converted using a lookup table, based on the POSC dictionary. You can explore this table using the `explore_units()` function. This function launches a shiny app. 
 
-You can also launch a shiny gadget to explore the available units either with `convert_gadget()` or through the addin menu. To access the addin make sure you are using a recent version of RStudio. 
+
+Figuring out which units can be converted to each other can be tricky, so convertr comes with an an shiny gadget to help you build valid `convert()` expressions. This can be accesed either by calliing `convert_gadget()` or through the addin menu. To access the addin make sure you are using a recent version of RStudio. 
 
 ![Gadget Animation](inst/media/convertr_gif.gif)
 

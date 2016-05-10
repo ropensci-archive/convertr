@@ -2,17 +2,15 @@
 % Please edit documentation in R/convert.R
 \name{get_conversion_table}
 \alias{get_conversion_table}
-\title{Return the conversion table
-A convenience function to return the lookup table underlying `convert()`}
+\title{Return the conversion table}
 \usage{
 get_conversion_table()
 }
 \value{
-A dataframe of conversion table
+Conversion table dataframe
 }
 \description{
-Return the conversion table
-A convenience function to return the lookup table underlying `convert()`
+A convenience function to return the lookup table underlying \code{convert()}
 }
 \examples{
 a <-  get_conversion_table()

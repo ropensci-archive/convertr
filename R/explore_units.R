@@ -1,8 +1,9 @@
 
 
-#' Explore interactive data table of units, if you want to build a conversion
-#' expression, then it's better to use `convert_gadget()`. This function provides
-#' a fuller view of the units, including some additional metadata.
+#' @title Explore conversion table
+#'
+#' @description A shiny application that lets you take a look at the conversion table.
+#'
 #'
 #' @return
 #' Launches a Shiny app

@@ -6,6 +6,7 @@
 \alias{convertr-package}
 \title{convertr}
 \description{
-convertr
+convertr allows you to convert numeric vectors between various
+unit types.
 }
 

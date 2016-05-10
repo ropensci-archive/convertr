@@ -17,8 +17,18 @@ convert(vector, origin, target)
 A numeric vector
 }
 \description{
-\code{convert} accepts a vector of numeric values and
-converts them from one unit to another. Approximately 1,300 units
+Converts numeric vectors from one unit to another Approximately 1500 units
 are available.
+\code{\link{convert_gadget}} can help you build valid \code{convert()} expressions and
+\code{\link{explore_units}} provides an interface for exploring the \code{\link{conversion_table}}
+which underlies the computation.
+}
+\examples{
+convert(1:20, "kg", "g")
+convert(1:20, "galUK/min.ft2", "kft/s")
+\dontrun{
+convert(1:20, "kg", "km2")
+}
+
 }
 

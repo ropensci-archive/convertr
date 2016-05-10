@@ -9,13 +9,16 @@ convert_gadget(vector, return_value = FALSE)
 \arguments{
 \item{vector}{A numeric vector to convert. You can change the vector within the app.}
 
-\item{return_value}{By default the gadget generates a convert() call, if return_value is set to
+\item{return_value}{By default the gadget generates a \code{convert()} call, if return_value is set to
 TRUE it will instead generate a converted vector.}
 }
 \value{
-Insert text into code with a proper convert call.
+Insert output text into editor.
 }
 \description{
-Launch interactive conversion gadget
+It's often difficult to remember the symbol for the units you want to convert.
+This gadget shows which units can be converted to one anohter, and a example calculation on sample data.
+On exit you can either return a valid \code{convert()} expression or a
+converted numeric vector.
 }
 
