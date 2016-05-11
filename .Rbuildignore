@@ -1,5 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-data_retrieval/*
+data-raw/*
 ^\.travis\.yml$
 ^CONDUCT\.md$

@@ -26,3 +26,11 @@ Figuring out which units can be converted to each other can be tricky, so conver
 ![Gadget Animation](inst/media/convertr_gif.gif)
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+
+
+
+
+[![ropensci\_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+
+
+
