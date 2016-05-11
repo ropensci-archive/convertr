@@ -13,4 +13,9 @@ Launches a Shiny app
 A shiny application that lets you take a look at the
 \code{\link{conversion_table}} dataframe.
 }
+\examples{
+\dontrun{
+explot_units()}
+
+}
 

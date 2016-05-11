@@ -10,6 +10,10 @@
 #' Launches a Shiny app
 #' @export
 #'
+#' @examples
+#' \dontrun{
+#' explot_units()}
+#'
 
 explore_units <- function(){
   app <- shiny::shinyApp(

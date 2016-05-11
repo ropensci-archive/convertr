@@ -23,7 +23,10 @@ On exit you can either return a valid \code{convert()} call or a
 converted numeric vector.
 }
 \examples{
+
+\dontrun{
 convert_gadget()
 convert_gadget(mtcars$mpg)
+}
 }
 

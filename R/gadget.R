@@ -15,8 +15,11 @@
 #' @return
 #' Insert output text into editor.
 #' @examples
+#'
+#' \dontrun{
 #' convert_gadget()
 #' convert_gadget(mtcars$mpg)
+#' }
 #' @export
 #'
 
