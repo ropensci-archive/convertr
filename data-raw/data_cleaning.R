@@ -1,6 +1,6 @@
 library(readr)
 library(dplyr)
-conversion_table <- read_csv("data_retrieval/conv.csv")
+conversion_table <- read_csv("data-raw/conv.csv")
 conversion_table <- conversion_table[, 1:10]
 
 names(conversion_table) <- tolower(names(conversion_table))
