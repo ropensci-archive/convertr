@@ -1,6 +1,7 @@
 # convertr
 
 [![Travis-CI Build Status](https://travis-ci.org/GShotwell/convertr.svg?branch=master)](https://travis-ci.org/GShotwell/convertr)
+[![](https://badges.ropensci.org/40_status.svg)](https://github.com/ropensci/onboarding/issues/40)
 
 An R package for converting things to other things. The package is not on CRAN but can be installed using:
 
